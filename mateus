@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+if (PHP_SAPI !== 'cli') {
+	fwrite(STDERR, "This script must run in CLI mode." . PHP_EOL);
+	exit(1);
+}
+
+$projectRoot = __DIR__;
+$migrateScript = $projectRoot . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'query' . DIRECTORY_SEPARATOR . 'migrate.php';
+
+$command = $argv[1] ?? null;
+
+if ($command === null || in_array($command, ['help', '--help', '-h'], true)) {
+	printHelp();
+	exit(0);
+}
+
+switch ($command) {
+	case 'migrate':
+		if (!is_file($migrateScript)) {
+			fwrite(STDERR, "Migration script not found: {$migrateScript}" . PHP_EOL);
+			exit(1);
+		}
+
+		$exitCode = runPhpScript($migrateScript);
+		exit($exitCode);
+
+	default:
+		fwrite(STDERR, "Unknown command: {$command}" . PHP_EOL);
+		printHelp();
+		exit(1);
+}
+
+function printHelp(): void
+{
+	echo "Usage: php mateus migrate" . PHP_EOL;
+}
+
+function runPhpScript(string $scriptPath): int
+{
+	$phpBinary = PHP_BINARY;
+	$commandLine = escapeshellarg($phpBinary) . ' ' . escapeshellarg($scriptPath);
+
+	passthru($commandLine, $exitCode);
+
+	return (int) $exitCode;
+}
