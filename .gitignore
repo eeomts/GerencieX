@@ -1,0 +1,4 @@
+/vendor
+/storage/database/logs/*.log
+/config/app.php
+/config/database.php
