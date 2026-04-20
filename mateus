@@ -7,10 +7,12 @@ if (PHP_SAPI !== 'cli') {
 	exit(1);
 }
 
-$projectRoot = __DIR__;
-$migrateScript = $projectRoot . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'query' . DIRECTORY_SEPARATOR . 'migrate.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+
+$migrateScript = PATH_MIGRATE;
 
 $command = $argv[1] ?? null;
+$subCommand = $argv[2] ?? null;
 
 if ($command === null || in_array($command, ['help', '--help', '-h'], true)) {
 	printHelp();
@@ -24,8 +26,19 @@ switch ($command) {
 			exit(1);
 		}
 
-		$exitCode = runPhpScript($migrateScript);
-		exit($exitCode);
+		if ($subCommand === null) {
+			$exitCode = runPhpScript($migrateScript);
+			exit($exitCode);
+		}
+
+		if ($subCommand === 'again') {
+			$exitCode = runPhpScript($migrateScript, ['again']);
+			exit($exitCode);
+		}
+
+		fwrite(STDERR, "Unknown migrate option: {$subCommand}" . PHP_EOL);
+		printHelp();
+		exit(1);
 
 	default:
 		fwrite(STDERR, "Unknown command: {$command}" . PHP_EOL);
@@ -35,13 +48,24 @@ switch ($command) {
 
 function printHelp(): void
 {
-	echo "Usage: php mateus migrate" . PHP_EOL;
+	echo "Usage:" . PHP_EOL;
+	echo "  php mateus migrate" . PHP_EOL;
+	echo "  php mateus migrate again" . PHP_EOL;
 }
 
-function runPhpScript(string $scriptPath): int
+function runPhpScript(string $scriptPath, array $arguments = []): int
 {
 	$phpBinary = PHP_BINARY;
-	$commandLine = escapeshellarg($phpBinary) . ' ' . escapeshellarg($scriptPath);
+	$commandParts = [
+		escapeshellarg($phpBinary),
+		escapeshellarg($scriptPath),
+	];
+
+	foreach ($arguments as $argument) {
+		$commandParts[] = escapeshellarg((string) $argument);
+	}
+
+	$commandLine = implode(' ', $commandParts);
 
 	passthru($commandLine, $exitCode);
 
