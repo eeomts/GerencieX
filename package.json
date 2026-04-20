@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "jquery-steps": "^1.1.0",
+    "smartwizard": "^7.0.2",
+    "toastify-js": "^1.12.0"
+  }
+}
