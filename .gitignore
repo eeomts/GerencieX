@@ -1,4 +1,4 @@
 /vendor
-/storage/database/logs/*.log
-/config/app.php
-/config/database.php
+/storage/logs/*.log
+/config/credentials.php
+/node_modules
