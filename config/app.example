@@ -1,9 +1,0 @@
-<?php
-
-declare(strict_types=1);
-
-defined('APP_NAME') || define('APP_NAME', 'Gerenciex');
-defined('APP_ENV') || define('APP_ENV', 'local');
-defined('APP_DEBUG') || define('APP_DEBUG', true);
-defined('APP_URL') || define('APP_URL', 'http://localhost');
-defined('MIGRATE_PATH') || define('MIGRATE_PATH', 'storage/database/query/');
