@@ -1,0 +1,25 @@
+CREATE TABLE condos (
+    id                  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    condo_type_id       INT UNSIGNED     NOT NULL DEFAULT 1,
+    company_name        VARCHAR(150)     NOT NULL,
+    cnpj                CHAR(14)         NOT NULL UNIQUE,
+    zip_code            CHAR(8)          NOT NULL,
+    street              VARCHAR(150)     NOT NULL,
+    number              VARCHAR(10)      NOT NULL,
+    complement          VARCHAR(60),
+    neighborhood        VARCHAR(80)      NOT NULL,
+    city                VARCHAR(80)      NOT NULL,
+    state               CHAR(2)          NOT NULL,
+    admin_email         VARCHAR(100)     NOT NULL,
+    phone               VARCHAR(15)      NOT NULL,
+    manager_name        VARCHAR(100)     NOT NULL,
+    manager_cpf         CHAR(11)         NOT NULL,
+    manager_email       VARCHAR(100)     NOT NULL,
+    manager_phone       VARCHAR(15)      NOT NULL,
+    units_count         SMALLINT         NOT NULL DEFAULT 0,
+    payment_day         TINYINT          NOT NULL DEFAULT 10,
+    active              TINYINT(1)       NOT NULL DEFAULT 1,
+    created_at          DATETIME         NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at          DATETIME         NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    
+);
