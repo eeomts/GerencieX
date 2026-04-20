@@ -2,3 +2,4 @@
 /storage/logs/*.log
 /config/credentials.php
 /node_modules
+/config/config.php
