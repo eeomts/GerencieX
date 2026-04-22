@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# If someone accesses URL with /public, redirect to clean URL.
+RewriteCond %{THE_REQUEST} \s/+(.*/)?public(?:/|\s) [NC]
+RewriteRule ^public/?(.*)$ $1 [R=301,L]
+
+# Internally route all requests to /public.
+RewriteCond %{REQUEST_URI} !/public/
+RewriteRule ^(.*)$ public/$1 [L]
