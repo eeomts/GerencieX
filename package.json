@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap-icons": "^1.13.1",
     "jquery": "^4.0.0",
     "jquery-steps": "^1.1.0",
     "smartwizard": "^7.0.2",
