@@ -1,0 +1,350 @@
+/* ============================================
+   BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    overflow: hidden;
+}
+
+body.page-login {
+    display: block;
+    min-height: 100svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 0;
+}
+
+/* ============================================
+   PHONE CONTAINER (shared)
+   ============================================ */
+.phone-container {
+    width: min(375px, 100vw);
+    height: min(812px, 100svh);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.phone-container.home {
+    background: linear-gradient(to bottom, #2d5bff 0%, #3e6eff 30%, #ffffff 70%, #ffffff 100%);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap: 28px;
+}
+
+.phone-container.login {
+    background: linear-gradient(to bottom, #2d5bff 0%, #3e6eff 25%, #ffffff 45%, #ffffff 100%);
+    height: auto;
+    min-height: min(812px, 100svh);
+    margin: 0 auto;
+}
+
+/* ============================================
+   HOME INDICATOR (iPhone style)
+   ============================================ */
+.home-indicator {
+    width: 134px;
+    height: 5px;
+    background-color: #ccc;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ============================================
+   HOME PAGE
+   ============================================ */
+.logo-container {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.logo-text {
+    color: white;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.content-bottom {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    width: 100%;
+    height: 64px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.phone-container.home .btn {
+    width: 80%;
+    height: 38px;
+    border-radius: 19px;
+    font-size: 16px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #1a4dff;
+    color: white;
+    box-shadow: 0 4px 15px rgba(26, 77, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #1a4dff;
+    border: 1px solid #1a4dff;
+}
+
+.btn-icon {
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+.btn-submit {
+    width: 100%;
+    height: 60px;
+    background-color: #1a4dff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(26, 77, 255, 0.3);
+    transition: transform 0.2s;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   LINKS & TEXT
+   ============================================ */
+.footer-text {
+    color: #666;
+    font-size: 14px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.link-signup,
+.link-create {
+    color: #1a4dff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-create {
+    color: #2d5bff;
+    font-weight: 700;
+}
+
+/* ============================================
+   ICONS
+   ============================================ */
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    fill: currentColor;
+}
+
+.icon-svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============================================
+   LOGIN PAGE
+   ============================================ */
+.status-bar {
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header {
+    padding: 20px 24px;
+    color: white;
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+
+.header-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.login-card {
+    flex: 1;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 32px 32px 0 0;
+    padding: 40px 24px;
+    padding-bottom: 56px;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-height: 760px) {
+    body.page-login {
+        padding: 8px 0;
+    }
+
+    .phone-container.login {
+        min-height: auto;
+    }
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    height: 56px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 0 16px 0 48px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: #2d5bff;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: #888;
+    width: 20px;
+    height: 20px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    color: #888;
+    cursor: pointer;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    color: #2d5bff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: -8px;
+    margin-bottom: 32px;
+}
