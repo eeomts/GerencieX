@@ -5,3 +5,12 @@ create table payment_status (
     updated_at DATETIME NULL,
     deleted    TINYINT(1) NOT NULL DEFAULT 0
 );
+
+insert into payment_status (name) values
+('Pendente'),
+('Pago'),
+('Em atraso'),
+('Vencido'),
+('Cancelado'),
+('Estornado'),
+('Parcialmente pago');

@@ -1,5 +1,6 @@
 CREATE TABLE condos (
     id                  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    access_token        varchar(50) not null unique,
     condo_type_id       INT UNSIGNED     NOT NULL DEFAULT 1,
     company_name        VARCHAR(150)     NOT NULL,
     cnpj                CHAR(14)         NOT NULL UNIQUE,
