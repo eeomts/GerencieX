@@ -1,29 +1,37 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Src\Core;
 
-class BaseController {
-
-    protected function render(string $view, array $data = []): void {
+class BaseController
+{
+    protected function render(string $view, array $data = []): void
+    {
         extract($data);
-        require __DIR__ . '/../../app/Views/' . $view . '.php';
+        require __DIR__ . '/../../app/views/' . $view . '.php';
     }
 
-    protected function json(array $data, int $status = 200): void {
+    protected function json(array $data, int $status = 200): void
+    {
         http_response_code($status);
         header('Content-Type: application/json');
         echo json_encode($data);
     }
 
-    protected function redirect(string $url): void {
+    protected function redirect(string $url): void
+    {
         header("Location: {$url}");
         exit;
     }
 
-    protected function isPost(): bool {
+    protected function isPost(): bool
+    {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
-    protected function isGet(): bool {
+    protected function isGet(): bool
+    {
         return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
 }
